@@ -5,7 +5,7 @@ const CustomerTable = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8080/customer/getCustomerList",
+    fetch("http://portfolio-seemar.netlify.app/getCustomerList",
     {
       method: "GET",
       credentials: "include",
