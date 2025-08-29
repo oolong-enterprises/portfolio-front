@@ -10,7 +10,7 @@ export const Admin = () =>{
 
     const handleLogout = async () => {
   try {
-    await fetch("http://localhost:8080/v1/logout", {
+    await fetch("https://portfolio-backend-3zgg.onrender.com/v1/logout", {
       method: "POST",
       credentials: "include",
     });

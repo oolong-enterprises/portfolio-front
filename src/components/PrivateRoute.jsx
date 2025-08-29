@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("http://localhost:8080/v1/checkAuth", {
+        const res = await fetch("https://portfolio-backend-3zgg.onrender.com/v1/checkAuth", {
           method: "GET",
           credentials: "include",
         });

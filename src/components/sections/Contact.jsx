@@ -22,7 +22,7 @@ export const Contact = () => {
         document.getElementById("thankYou").textContent = `Thank you ${formData.name}, we will be in touch.`
 
     try {
-      const res = await fetch("http://localhost:8080/customer/Post", {
+      const res = await fetch("https://portfolio-backend-3zgg.onrender.com/customer/Post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
