@@ -5,7 +5,7 @@ const CustomerTable = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://portfolio-seemar.netlify.app/customer/getCustomerList",
+    fetch("https://portfolio-backend-3zgg.onrender.com/customer/getCustomerList",
     {
       method: "GET",
       credentials: "include",
