@@ -21,7 +21,6 @@ export function AuthProvider({ children }) {
     } finally {
       setIsLoggedIn(false);
       setUserName(null);
-      setRole(null);
     }
   };
 
