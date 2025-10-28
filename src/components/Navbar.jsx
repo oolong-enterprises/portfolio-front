@@ -46,7 +46,7 @@ export const Navbar = ({menuOpen, setMenuOpen}) => {
                     Blog </a>
 
                     <LoginButton />
-                    <p> {isLoggedIn ? userName : ''} </p>
+                    <p> {isLoggedIn ? '' : userName} </p>
                 </div>
             </div>
        </div>
