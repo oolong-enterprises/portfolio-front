@@ -43,7 +43,8 @@ export const Login = () => {
         setFormData({ userName: "", password: "" });
         document.getElementById("Login").textContent = `Welcome`
         setIsLoggedIn(true);
-        navigate('/admin');
+        setUserName(data.userName)
+        navigate('/');
       } else {
         document.getElementById("Login").textContent = `Invalid Credentials`
       }
