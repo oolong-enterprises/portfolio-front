@@ -7,7 +7,7 @@ import BackButton from '../BackButton';
 export const Login = () => {
 
     const navigate = useNavigate();
-    const { setIsLoggedIn , isLoggedIn } = useAuth();
+    const { setIsLoggedIn , isLoggedIn, setUserName } = useAuth();
 
     const [formData, setFormData] = useState({
     userName: "",
