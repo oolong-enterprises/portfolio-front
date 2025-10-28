@@ -11,7 +11,7 @@ import PrivateRoute  from './components/PrivateRoute';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Login } from './components/sections/Login';
 import { Admin } from './components/sections/Admin';
-import LoginButton from './components/LoginButton';
+import { Blog } from './components/sections/Blog';
 import "./index.css"
 
 function App() {
@@ -61,8 +61,8 @@ function App() {
               </>
             }
           />
+          <Route path='/blog' element={<Blog />} />
         </Routes>
-        <LoginButton />
       </div>
     </>
   );
