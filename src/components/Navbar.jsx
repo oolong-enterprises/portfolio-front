@@ -4,8 +4,8 @@ import { useAuth } from "./AuthContext";
 
 export const Navbar = ({menuOpen, setMenuOpen}) => {
 
-    const { userName } = useAuth;
-    const { isLoggedIn } = useAuth();
+    const { userName } = useAuth();
+    const { isLoggedIn} = useAuth();
 
     useEffect(() => {
         document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -46,7 +46,7 @@ export const Navbar = ({menuOpen, setMenuOpen}) => {
                     Blog </a>
 
                     <LoginButton />
-                    <p> {isLoggedIn ? '' : userName} </p>
+                    <p>{isLoggedIn ? userName : ''}</p>
                 </div>
             </div>
        </div>
