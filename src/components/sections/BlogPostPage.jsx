@@ -27,7 +27,7 @@ export default function BlogPostPage() {
 
   return (
     <div className="w-3/4 mx-auto mt-[10vh] p-6 bg-black/70 rounded-xl text-white">
-      <Link to="/" className="text-cyan-400 hover:underline mb-4 inline-block">
+      <Link to="/blog" className="text-cyan-400 hover:underline mb-4 inline-block">
         &larr; Back to home
       </Link>
 
@@ -43,7 +43,8 @@ export default function BlogPostPage() {
           </span>
         ))}
       </div>
-      <div className="text-gray-200 whitespace-pre-line">{post.content}</div>
+      <div className="text-gray-200 whitespace-pre-line"
+      dangerouslySetInnerHTML={{ __html: post.content }} />
     </div>
   );
 }
