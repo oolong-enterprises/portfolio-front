@@ -12,6 +12,7 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { Login } from './components/sections/Login';
 import { Admin } from './components/sections/Admin';
 import { Blog } from './components/sections/Blog';
+import BlogPostPage from './components/sections/BlogPostPage';
 import "./index.css"
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
             }
           />
           <Route path='/blog' element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
         </Routes>
       </div>
     </>
