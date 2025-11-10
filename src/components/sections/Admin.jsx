@@ -86,7 +86,7 @@ export const Admin = () => {
                 value={formData.content}
                 onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
                 placeholder="Write your blog post..."
-                className="bg-white/5 text-white rounded-lg"
+                className="bg-white/5 text-white rounded-lg h-[400px]"
               />
             </div>
 
