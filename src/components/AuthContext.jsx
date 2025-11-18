@@ -29,10 +29,8 @@ export function AuthProvider({ children }) {
   }, [isLoggedIn]);
 
   return (
-    <AuthContext.Provider value={{ 
-      isLoggedIn, setIsLoggedIn, 
-      userName, setUserName,
-      logout }}>
+     <AuthContext.Provider 
+     value={{ isLoggedIn, setIsLoggedIn, userRole, setUserRole }}>
       {children}
     </AuthContext.Provider>
   );
