@@ -32,7 +32,7 @@ export default function BlogPostPage() {
       </Link>
 
       <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
-      <p className="text-gray-300 mb-6">{post.createdAt}</p>
+      <p className="text-gray-300 mb-6">{new Date(post.createdAt).toLocaleDateString()}</p>
       <div className="mb-6">
         {post.tags?.map((tag, key) => (
           <span
