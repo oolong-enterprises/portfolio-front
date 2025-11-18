@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { LoadingScreen } from "./LoadingScreen";
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children, requiredRole }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const { setIsLoggedIn, setUserRole } = useAuth();
+  const { isLoggedIn, userRole, setIsLoggedIn, setUserRole }  = useAuth();
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -18,11 +18,12 @@ const PrivateRoute = ({ children }) => {
         if (!res.ok) throw new Error("Not authenticated");
 
         const data = await res.json();
+
         setIsLoggedIn(res.ok);
         setUserRole(data.role);
-        setUserRole(null);
       } catch {
         setIsLoggedIn(false);
+        setUserRole(null);
       } finally {
         setIsLoading(false);
       }
@@ -35,7 +36,11 @@ const PrivateRoute = ({ children }) => {
     return <LoadingScreen/>;
   }
 
-  return isLoggedIn ? children : <Navigate to="/login" replace />;
+  if (requiredRole && userRole !== requiredRole) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
 };
 
 export default PrivateRoute;

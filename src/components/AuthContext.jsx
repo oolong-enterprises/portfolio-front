@@ -8,7 +8,9 @@ export function AuthProvider({ children }) {
     const saved = localStorage.getItem("isLoggedIn");
     return saved === "true"; 
   });
+
   const [userName, setUserName] = useState(null);
+  const [userRole, setUserRole] = useState(null);
 
   const logout = async () => {
     try {
@@ -20,6 +22,7 @@ export function AuthProvider({ children }) {
       console.error("Error logging out", err);
     } finally {
       setIsLoggedIn(false);
+      setUserRole(null);
       setUserName(null);
     }
   };
@@ -30,7 +33,15 @@ export function AuthProvider({ children }) {
 
   return (
      <AuthContext.Provider 
-     value={{ isLoggedIn, setIsLoggedIn, userRole, setUserRole }}>
+        value={{
+          isLoggedIn,
+          setIsLoggedIn,
+          userRole,
+          setUserRole,
+          userName,
+          setUserName,
+          logout
+        }}>
       {children}
     </AuthContext.Provider>
   );
