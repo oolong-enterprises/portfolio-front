@@ -16,41 +16,21 @@ import BlogPostPage from './components/sections/BlogPostPage';
 import "./index.css"
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-
-  const location = useLocation();
-
-  const adminRoutes = ['/login', '/admin'];
-  const isAdminRoute = adminRoutes.includes(location.pathname);
-
-  if (isAdminRoute) {
-    return (
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute requiredRole="ADMIN">
-              <Admin />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    );
-  }
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
 
-      <div 
+      <div
         className={`min-h-screen transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"} bg-black text-gray-100`}
       >
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
         <Routes>
+          {/* Public routes */}
           <Route
             path="/"
             element={
@@ -62,13 +42,23 @@ function App() {
               </>
             }
           />
-          <Route path='/blog' element={<Blog />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/login" element={<Login />} />
+
+          {/* Admin-protected routes */}
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute requiredRole="ADMIN">
+                <Admin />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </div>
     </>
   );
 }
-
 
 export default App;

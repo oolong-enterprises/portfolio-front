@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
   localStorage.setItem("isLoggedIn", isLoggedIn);
-  localStorage.setItem("admin", userRole || "");
+  localStorage.setItem("ADMIN", userRole || "");
 }, [isLoggedIn, userRole]);
 
   return (
