@@ -15,6 +15,10 @@ export const Projects = () => {
                 <div className="rounded-2xl bg-white/5 backdrop-blur-sm p-8 shadow-lg border border-white/10 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
                     <h3 className="text-xl font-bold mb-4" >Website Backend</h3>
 
+                    <a className="inline-block text-blue-400 hover:text-blue-300 underline mb-4"
+                     href="https://github.com/oolong-enterprises/Website_Backend_Public" target="blank"> 
+                    GitHub Link →</a>
+
                     <div className="flex flex-wrap gap-2">
                     <p className="text-gray-300 leading-relaxed mb-6">
                         The Website Backend is a Spring Boot REST API designed to power a modern React frontend.

@@ -2,7 +2,7 @@ import RevealOnScroll from "../RevealOnScroll";
 
 export const About = () => {
 
-    const frontendSkills =["React", "Vue", "Java Script", "Tailwind CSS"];
+    const frontendSkills =["React", "Java Script", "Tailwind CSS"];
 
     const backendSkills =["Spring", "SQL", "Object Relational Mapping", "JAVA"];
 
@@ -22,9 +22,10 @@ export const About = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                        <h3 className="text-xl font-bold mb-4">FrontEnd </h3>
+                        <h3 className="text-xl font-bold mb-4">BackEnd </h3>
+
                         <div className="flex flex-wrap gap-2">
-                            {frontendSkills.map((tech, key) => 
+                            {backendSkills.map((tech, key) => 
                             <span 
                             key={key}
                             className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 2246, 0.2)] transition">
@@ -36,9 +37,10 @@ export const About = () => {
                     </div>
 
                     <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
-                        <h3 className="text-xl font-bold mb-4">BackEnd </h3>
+                        <h3 className="text-xl font-bold mb-4">FrontEnd </h3>
+                        
                         <div className="flex flex-wrap gap-2">
-                            {backendSkills.map((tech, key) => 
+                            {frontendSkills.map((tech, key) => 
                             <span 
                             key={key}
                             className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-sm hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59, 130, 2246, 0.2)] transition">
