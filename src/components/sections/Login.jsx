@@ -7,7 +7,7 @@ import BackButton from '../BackButton';
 export const Login = () => {
 
     const navigate = useNavigate();
-    const { setIsLoggedIn , isLoggedIn, setUserName } = useAuth();
+    const { setIsLoggedIn , setUserName, setUserRole } = useAuth();
 
     const [formData, setFormData] = useState({
     userName: "",
@@ -41,9 +41,10 @@ export const Login = () => {
       
       if (res.ok) {
         setFormData({ userName: "", password: "" });
-        document.getElementById("Login").textContent = `Welcome`
+        document.getElementById("Login").textContent = `Welcome`;
         setIsLoggedIn(true);
-        setUserName(data.userName)
+        setUserName(data.userName);
+        setUserRole(data.role || null);
         navigate('/');
       } else {
         document.getElementById("Login").textContent = `Invalid Credentials`
@@ -61,7 +62,7 @@ export const Login = () => {
     <div className="w-full max-w-3xl mx-auto">
       <RevealOnScroll>
         <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-          Admin Log In
+          Log In
         </h2>
 
         <p id="Login" className="text-center text-gray-400 text-lg md:text-2xl font-bold mb-8 my-8"></p>
