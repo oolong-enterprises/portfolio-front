@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
   });
 
   const [userRole, setUserRole] = useState(() => {
-  return localStorage.getItem("admin") || null;
+  return localStorage.getItem("ADMIN") || null;
   });
 
   const [userName, setUserName] = useState(() => {
@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem("isLoggedIn", isLoggedIn);
-    localStorage.setItem("admin", userRole || "");
+    localStorage.setItem("ADMIN", userRole || "");
     localStorage.setItem("userName", userName || "");
   }, [isLoggedIn, userRole, userName]);
 
@@ -35,6 +35,9 @@ export function AuthProvider({ children }) {
       setIsLoggedIn(false);
       setUserRole(null);
       setUserName(null);
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("ADMIN");
+      localStorage.removeItem("userName");
     }
   };
 
