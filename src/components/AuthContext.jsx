@@ -1,25 +1,23 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem("isLoggedIn") === "true";
   });
 
   const [userRole, setUserRole] = useState(() => {
-  return localStorage.getItem("ADMIN") || null;
+    return localStorage.getItem("userRole") || null;
   });
 
   const [userName, setUserName] = useState(() => {
-  return localStorage.getItem("userName") || null;
+    return localStorage.getItem("userName") || null;
   });
 
   useEffect(() => {
     localStorage.setItem("isLoggedIn", isLoggedIn);
-    localStorage.setItem("ADMIN", userRole || "");
+    localStorage.setItem("userRole", userRole || "");
     localStorage.setItem("userName", userName || "");
   }, [isLoggedIn, userRole, userName]);
 
@@ -36,15 +34,10 @@ export function AuthProvider({ children }) {
       setUserRole(null);
       setUserName(null);
       localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("ADMIN");
+      localStorage.removeItem("userRole");
       localStorage.removeItem("userName");
     }
   };
-
-  useEffect(() => {
-  localStorage.setItem("isLoggedIn", isLoggedIn);
-  localStorage.setItem("ADMIN", userRole || "");
-}, [isLoggedIn, userRole]);
 
   return (
     <AuthContext.Provider
