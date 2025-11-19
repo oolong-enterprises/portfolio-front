@@ -4,13 +4,24 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
+
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    const saved = localStorage.getItem("isLoggedIn");
-    return saved === "true"; 
+    return localStorage.getItem("isLoggedIn") === "true";
   });
 
-  const [userName, setUserName] = useState(null);
-  const [userRole, setUserRole] = useState(null);
+  const [userRole, setUserRole] = useState(() => {
+  return localStorage.getItem("admin") || null;
+  });
+
+  const [userName, setUserName] = useState(() => {
+  return localStorage.getItem("userName") || null;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", isLoggedIn);
+    localStorage.setItem("admin", userRole || "");
+    localStorage.setItem("userName", userName || "");
+  }, [isLoggedIn, userRole, userName]);
 
   const logout = async () => {
     try {
@@ -28,20 +39,22 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    localStorage.setItem("isLoggedIn", isLoggedIn);
-  }, [isLoggedIn]);
+  localStorage.setItem("isLoggedIn", isLoggedIn);
+  localStorage.setItem("admin", userRole || "");
+}, [isLoggedIn, userRole]);
 
   return (
-     <AuthContext.Provider 
-        value={{
-          isLoggedIn,
-          setIsLoggedIn,
-          userRole,
-          setUserRole,
-          userName,
-          setUserName,
-          logout
-        }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        userRole,
+        setUserRole,
+        userName,
+        setUserName,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
